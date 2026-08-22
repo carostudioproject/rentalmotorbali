@@ -28,7 +28,7 @@ Beranda dirakit di `app/page.tsx` dengan urutan `Navbar`, hero, fitur, katalog, 
 
 Halaman detail di `app/motor/[slug]/page.tsx` mencari motor berdasarkan `slug`. Motor yang tidak ditemukan dikirim ke `notFound()`. Komponen `PricingTable` menangani tampilan harga dan helper di `data/site.ts` membentuk URL WhatsApp.
 
-## Panduan untuk AI dan programmer baru
+## Panduan untuk Programmer
 
 - Baca `docs/ARCHITECTURE.md` sebelum melakukan perubahan lintas file.
 - Perubahan konten bisnis dimulai dari folder `data/`.
