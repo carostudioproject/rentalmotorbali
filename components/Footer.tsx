@@ -6,12 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 const menuLinks = [
-  { label: "Beranda", href: "#home" },
-  { label: "Motor", href: "#motor" },
-  { label: "Cara Rental", href: "#cara-rental" },
-  { label: "Tentang Kami", href: "#tentang" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Kontak", href: "#kontak" },
+  { label: "Beranda", href: "/#home" },
+  { label: "Motor", href: "/motor" },
+  { label: "Cara Rental", href: "/#cara-rental" },
+  { label: "Tentang Kami", href: "/#tentang" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Kontak", href: "/#kontak" },
 ];
 
 const serviceLinks = [
@@ -29,34 +29,39 @@ export default function Footer() {
       className="bg-[#111820] px-5 pt-14 text-gray-300 md:px-8 lg:px-12"
     >
       <div className="mx-auto grid max-w-6xl gap-10 pb-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.1fr]">
+
         {/* Brand */}
         <div>
-          <a href="#home" className="inline-flex items-center gap-3 text-white">
-            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f5e8cc] text-xl">
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/images/icon-rental.png"
-                  alt="Rental Motor Bali"
-                  width={150}
-                  height={50}
-                  priority
-                  className="h-auto w-[135px] object-contain"
-                />
-              </Link>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-3 text-white"
+          >
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f5e8cc]">
+              <Image
+                src="/images/icon-rental.png"
+                alt="Rental Motor Bali"
+                width={40}
+                height={40}
+                priority
+                className="h-8 w-8 object-contain"
+              />
             </span>
 
             <span className="text-xs font-bold leading-tight">
               RENTAL MOTOR
-              <strong className="block text-lg">BALI</strong>
+              <strong className="block text-lg">
+                BALI
+              </strong>
             </span>
-          </a>
+          </Link>
 
           <p className="mt-5 max-w-[280px] text-sm leading-6 text-gray-400">
-            Solusi terbaik untuk sewa motor di Bali. Motor terawat, harga
-            bersahabat, layanan terbaik untuk perjalanan Anda.
+            Solusi terbaik untuk sewa motor di Bali. Motor terawat,
+            harga bersahabat, layanan terbaik untuk perjalanan Anda.
           </p>
 
           <div className="mt-5 flex gap-3">
+
             <a
               href="#"
               aria-label="Instagram"
@@ -74,7 +79,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://wa.me/6281234567890"
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -82,33 +87,41 @@ export default function Footer() {
             >
               WA
             </a>
+
           </div>
         </div>
 
         {/* Menu */}
         <div>
-          <h3 className="mb-5 text-sm font-bold text-white">Menu</h3>
+          <h3 className="mb-5 text-sm font-bold text-white">
+            Menu
+          </h3>
 
           <div className="space-y-3">
             {menuLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="block text-sm text-gray-400 transition hover:text-white"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
 
         {/* Services */}
         <div>
-          <h3 className="mb-5 text-sm font-bold text-white">Layanan</h3>
+          <h3 className="mb-5 text-sm font-bold text-white">
+            Layanan
+          </h3>
 
           <div className="space-y-3">
             {serviceLinks.map((service) => (
-              <p key={service} className="text-sm text-gray-400">
+              <p
+                key={service}
+                className="text-sm text-gray-400"
+              >
                 {service}
               </p>
             ))}
@@ -117,9 +130,12 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <h3 className="mb-5 text-sm font-bold text-white">Kontak</h3>
+          <h3 className="mb-5 text-sm font-bold text-white">
+            Kontak
+          </h3>
 
           <div className="space-y-4 text-sm text-gray-400">
+
             <a
               href={`tel:${siteConfig.phone}`}
               className="flex items-center gap-3 transition hover:text-white"
@@ -150,8 +166,10 @@ export default function Footer() {
               <Mail size={16} />
               {siteConfig.email}
             </a>
+
           </div>
         </div>
+
       </div>
 
       {/* Copyright */}
