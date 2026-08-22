@@ -4,21 +4,23 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { getWhatsAppUrl } from "@/data/site";
 
 const menuItems = [
-  { label: "Beranda", href: "#home" },
-  { label: "Motor", href: "#motor" },
-  { label: "Cara Rental", href: "#cara-rental" },
-  { label: "Tentang Kami", href: "#tentang" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Kontak", href: "#kontak" },
+  { label: "Beranda", href: "/#home" },
+  { label: "Motor", href: "/motor" },
+  { label: "Cara Rental", href: "/#cara-rental" },
+  { label: "Tentang Kami", href: "/#tentang" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Kontak", href: "/#kontak" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -53,19 +55,28 @@ export default function Navbar() {
             DESKTOP NAVIGATION
         ========================== */}
         <nav className="hidden items-center gap-7 lg:flex">
-          {menuItems.map((item, index) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`relative py-7 text-sm font-medium transition ${
-                index === 0
-                  ? "text-[#a97b28] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#c5963a]"
-                  : "text-gray-700 hover:text-[#a97b28]"
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
+          {menuItems.map((item) => {
+            const isActive =
+              item.label === "Beranda"
+                ? pathname === "/"
+                : item.label === "Motor"
+                  ? pathname === "/motor" || pathname.startsWith("/motor/")
+                  : false;
+
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`relative py-7 text-sm font-medium transition ${
+                  isActive
+                    ? "text-[#a97b28] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#c5963a]"
+                    : "text-gray-700 hover:text-[#a97b28]"
+                }`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </nav>
 
         {/* =========================

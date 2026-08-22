@@ -10,6 +10,7 @@ import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 import { motorcycles } from "@/data/motorcycles";
 import { getMotorWhatsAppUrl } from "@/data/site";
+import Footer from "@/components/Footer";
 
 interface MotorcycleDetailPageProps {
   params: Promise<{
@@ -243,6 +244,8 @@ export default async function MotorcycleDetailPage({
           </div>
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }

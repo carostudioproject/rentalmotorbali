@@ -49,7 +49,7 @@ export default function Hero() {
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/40 bg-black/20 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white hover:text-[#17202a]"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/40 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition duration-200 hover:border-[#25b95b] hover:bg-[#25b95b] hover:text-white"
             >
               <WhatsAppIcon size={18} />
               Chat WhatsApp

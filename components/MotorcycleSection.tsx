@@ -1,5 +1,6 @@
 import { motorcycles } from "@/data/motorcycles";
 import MotorcycleCard from "./MotorcycleCard";
+import Link from "next/link";
 
 export default function MotorcycleSection() {
   return (
@@ -26,9 +27,12 @@ export default function MotorcycleSection() {
         </div>
 
         <div className="mt-8 text-center">
-          <button className="rounded-lg border border-gray-400 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50">
+          <Link
+            href="/motor"
+            className="inline-flex items-center justify-center rounded-lg border border-[#c5963a] px-5 py-3 text-sm font-bold text-[#a97b28] transition hover:bg-[#c5963a] hover:text-white"
+          >
             Lihat Semua Motor
-          </button>
+          </Link>
         </div>
       </div>
     </section>
