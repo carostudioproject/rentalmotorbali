@@ -2,6 +2,9 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { siteConfig, getWhatsAppUrl } from "@/data/site";
 
+import Image from "next/image";
+import Link from "next/link";
+
 const menuLinks = [
   { label: "Beranda", href: "#home" },
   { label: "Motor", href: "#motor" },
@@ -30,7 +33,16 @@ export default function Footer() {
         <div>
           <a href="#home" className="inline-flex items-center gap-3 text-white">
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f5e8cc] text-xl">
-              🛵
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/images/icon-rental.png"
+                  alt="Rental Motor Bali"
+                  width={150}
+                  height={50}
+                  priority
+                  className="h-auto w-[135px] object-contain"
+                />
+              </Link>
             </span>
 
             <span className="text-xs font-bold leading-tight">
