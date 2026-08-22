@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rental Motor Bali
 
-## Getting Started
+Website rental motor Bali berbasis Next.js App Router dan TypeScript. Halaman beranda menampilkan section layanan dan katalog motor; setiap motor memiliki halaman detail dinamis dengan harga dan tombol WhatsApp.
 
-First, run the development server:
+## Mulai cepat
+
+Pastikan Node.js dan npm tersedia, lalu jalankan dari folder proyek ini:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Jangan menyalin harga atau nomor WhatsApp langsung ke komponen. Ubah sumber datanya agar semua halaman tetap konsisten.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Menambah motor baru
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Tambahkan gambar ke `public/images/motorcycles/`.
+2. Tambahkan object baru ke array `motorcycles` di `data/motorcycles.ts`.
+3. Pastikan `id` dan `slug` unik, `image` sesuai nama file, serta rentang `pricing` tidak tumpang tindih.
+4. Jalankan lint dan build.
 
-## Learn More
+Halaman `/motor/[slug]`, link dari katalog, metadata detail, dan pesan WhatsApp dibuat dari data tersebut. Route baru tidak perlu didaftarkan manual.
 
-To learn more about Next.js, take a look at the following resources:
+## Alur halaman
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Beranda dirakit di `app/page.tsx` dengan urutan `Navbar`, hero, fitur, katalog, manfaat, langkah rental, testimoni, FAQ, CTA, footer, dan tombol WhatsApp mengambang.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Halaman detail di `app/motor/[slug]/page.tsx` mencari motor berdasarkan `slug`. Motor yang tidak ditemukan dikirim ke `notFound()`. Komponen `PricingTable` menangani tampilan harga dan helper di `data/site.ts` membentuk URL WhatsApp.
 
-## Deploy on Vercel
+## Panduan untuk AI dan programmer baru
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Baca `docs/ARCHITECTURE.md` sebelum melakukan perubahan lintas file.
+- Perubahan konten bisnis dimulai dari folder `data/`.
+- Perubahan layout atau tampilan dimulai dari komponen yang bertanggung jawab, bukan dari halaman root.
+- Pertahankan alias import `@/` dan tipe `Motorcycle`.
+- Jangan menghapus `slug` yang sudah dipakai tanpa memikirkan link dan SEO.
+- Setelah perubahan, cek beranda, satu halaman detail, URL slug salah, serta tampilan mobile.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+
+Proyek ini dapat dideploy ke Vercel. Jalankan `npm run build` secara lokal sebelum push untuk menangkap error TypeScript, route, atau aset lebih awal.
